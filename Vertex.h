@@ -3,21 +3,30 @@
 * victor.sene@utbm.fr
 * INFO 01 - AG44
 */
+#ifndef VERTEX_H
+#define VERTEX_H
 
 #include <iostream>
-#include <std::list>
+#include <vector>
 
-class Edge;
+using namespace std;
 
 class Vertex{
-    private :
-        bool _flag;
-        int _number;
+    friend class Graph;
 
-    public :
-        Vertex();
-        ~Vertex();
+    private :
+        bool _mark;
+        bool _plus;
+        bool _moins;
+
+        int _num;
         vector<Vertex*> _next;
         vector<Vertex*> _before;
 
-}
+    public :
+        Vertex(int n);
+        ~Vertex();
+
+
+};
+#endif

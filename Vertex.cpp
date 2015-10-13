@@ -3,6 +3,11 @@
  * Victor SENE
  * victor.sene@utbm.fr
  */
+
 #include "Vertex.h"
-#include "Edge.h"
-using namespace std;
+
+Vertex::Vertex(int n):_num(n), _next(), _before(){
+    bool _mark = false;
+    bool _plus = false;
+    bool _moins = false;
+}

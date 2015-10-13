@@ -4,29 +4,39 @@
 * INFO 01 - AG44
 */
 
+#ifndef GRAPH_H
+#define  GRAPH_H
+
 #include <iostream>
 #include <fstream>
-#include <string>
 
 #include <stack>
 #include <vector>
 
-#include "Vertex.h"
+#include "Edge.h"
+
+using namespace std;
 
 class Graph{
     private :
-    char* _name;
     int _size;
+    int _numVertex;
+    int _numEdge;
     vector<Vertex*> _vertex;
+    vector<Edge*> _edges;
 
     public :
     Graph();
-    Graph(const Graph& g);
+    Graph(const char* fileName);
     ~Graph();
 
 
     void readFile(const char* fileName);
+    void addVertex();
+    void addEdge(const int i, const int j);
+    void print();
+    void stronglyConnected();
+
+
 };
-
-
-//vector<Vertex*> tarjan()
+#endif

@@ -10,7 +10,7 @@
 using namespace std;
 
 int main(int argc, char const *argv[]) {
-    Graph graph;
-    graph.readFile("mat1.txt");
+    Graph graph("mat1.txt");
+    graph.print();
     return 0;
 }
