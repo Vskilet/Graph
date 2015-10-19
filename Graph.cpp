@@ -210,7 +210,7 @@ void Graph::longestPath(){
     cout << endl;
 }
 
-Vertex* Graph::recursiveLgPath(Vertex* current){
+/*Vertex* Graph::recursiveLgPath(Vertex* current){
     if (current._leave.size() != 0) {
         current._mark == true;
         longPath.push_back(recursiveLgPath((*current)._leave);
@@ -218,4 +218,4 @@ Vertex* Graph::recursiveLgPath(Vertex* current){
     else{
         return current;
     }
-}
+}*/
