@@ -33,9 +33,18 @@ class Graph{
 
     void readFile(const char* fileName);
     void addVertex();
-    void addEdge(const int i, const int j);
+    void addEdge(Vertex* vi, Vertex* vj);
     void print();
-    void stronglyConnected();
+    vector<vector<Vertex*> > stronglyConnected();
+    void falseForAll();
+    Vertex* noFlagElement();
+    void matrixLevel();
+    void reduceMatrixLevel(vector<vector<Vertex*> > out);
+    int vertexLevel(Vertex* v, vector<vector<Vertex*> > out);
+    void longestPath();
+    Vertex* recursiveLgPath(Vertex* current);
+
+
 
 
 };
