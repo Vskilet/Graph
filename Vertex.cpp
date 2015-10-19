@@ -6,8 +6,9 @@
 
 #include "Vertex.h"
 
-Vertex::Vertex(int n):_num(n), _next(), _before(){
-    bool _mark = false;
-    bool _plus = false;
-    bool _moins = false;
+Vertex::Vertex(int n):_num(n), _leave(), _come(){
+    _flag = false;
+    _mark = false;
+    _plus = false;
+    _moins = false;
 }

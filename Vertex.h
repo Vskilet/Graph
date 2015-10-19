@@ -15,13 +15,14 @@ class Vertex{
     friend class Graph;
 
     private :
+        bool _flag;
         bool _mark;
         bool _plus;
         bool _moins;
 
         int _num;
-        vector<Vertex*> _next;
-        vector<Vertex*> _before;
+        vector<Vertex*> _leave;
+        vector<Vertex*> _come;
 
     public :
         Vertex(int n);
