@@ -195,27 +195,38 @@ int Graph::vertexLevel(Vertex* v, vector<vector<Vertex*> > out){
     }
 }
 
-void Graph::longestPath(){
-    vector<Vertex*> longPath;
-
+void Graph::longestPath(const int id){
+    vector<Vertex*> oldLongPath;
+    vector<Vertex*> newLongPath;
+    Vertex *current = _vertex[id];
     falseForAll();
-    Vertex* current = _vertex[0];
-
+    recursiveLgPath(*current, newLongPath, oldLongPath);
 
 
     cout << "Longuest path :";
-    for (vector<Vertex*>::iterator it = longPath.begin(); it != longPath.end(); ++it) {
+    for (vector<Vertex*>::iterator it = oldLongPath.begin(); it != oldLongPath.end(); ++it) {
         cout << (**it)._num << " ";
     }
     cout << endl;
 }
 
-/*Vertex* Graph::recursiveLgPath(Vertex* current){
-    if (current._leave.size() != 0) {
-        current._mark == true;
-        longPath.push_back(recursiveLgPath((*current)._leave);
+vector<Vertex*> Graph::recursiveLgPath(Vertex &current, vector<Vertex*> &newLongPath, vector<Vertex*> &oldLongPath){
+    current._mark = true;
+    newLongPath.push_back(&current);
+    if (newLongPath.size() > oldLongPath.size()) {
+        oldLongPath.clear();
+        for(vector<Vertex*>::iterator it = newLongPath.begin(); it != newLongPath.end(); ++it){
+            oldLongPath.push_back(*it);
+        }
     }
-    else{
-        return current;
+    for(vector<Vertex*>::iterator it = current._leave.begin(); it != current._leave.end(); ++it){
+
+        if (!(**it)._mark) {
+            recursiveLgPath((**it), newLongPath, oldLongPath);
+        }
+
     }
-}*/
+    current._mark = false;
+    newLongPath.pop_back();
+    return newLongPath;
+}

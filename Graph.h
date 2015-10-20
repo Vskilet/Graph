@@ -41,10 +41,8 @@ class Graph{
     void matrixLevel();
     void reduceMatrixLevel(vector<vector<Vertex*> > out);
     int vertexLevel(Vertex* v, vector<vector<Vertex*> > out);
-    void longestPath();
-    Vertex* recursiveLgPath(Vertex* current);
-
-
+    void longestPath(const int id);
+    vector<Vertex*> recursiveLgPath(Vertex &current, vector<Vertex*> &newLongPath, vector<Vertex*> &oldLongPath);
 
 
 };
