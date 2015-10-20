@@ -96,24 +96,25 @@ vector<vector<Vertex*> > Graph::stronglyConnected(){
         }
         falseForAll();
         flagReply->_plus = flagReply->_moins = true;
-        for (it = _vertex.begin(); it != _vertex.end(); ++it) {
-            if ((**it)._plus && !(**it)._mark && !(**it)._flag) {
-                (**it)._mark = true;
-                for (it2 = (**it)._leave.begin(); it2 != (**it)._leave.end() ; ++it2){
-                    (**it2)._plus = true;
-                }
+        Vertex* plusElement = plusMark();
+        while (plusElement != NULL) {
+            (*plusElement)._mark = true;
+            for (it2 = (*plusElement)._leave.begin(); it2 != (*plusElement)._leave.end() ; ++it2){
+                (**it2)._plus = true;
             }
+            plusElement = plusMark();
         }
 
         falseForAll();
-        for (it = _vertex.begin(); it!=_vertex.end(); ++it) {
-            if ((**it)._moins && !(**it)._mark && !(**it)._flag) {
-                (**it)._mark = true;
-                for (it2 = (**it)._come.begin(); it2 != (**it)._come.end() ; ++it2){
-                    (**it2)._moins = true;
-                }
+        Vertex* moinsElement = moinsMark();
+        while (moinsElement != NULL) {
+            (*moinsElement)._mark = true;
+            for (it2 = (*moinsElement)._come.begin(); it2 != (*moinsElement)._come.end() ; ++it2){
+                (**it2)._moins = true;
             }
+            moinsElement = moinsMark();
         }
+
 
         for (it = _vertex.begin(); it!=_vertex.end(); ++it) {
             if ((**it)._plus && (**it)._moins) {
@@ -137,6 +138,24 @@ void Graph::falseForAll(){
 Vertex* Graph::noFlagElement(){
     for (vector<Vertex*>::iterator i = _vertex.begin(); i != _vertex.end(); ++i) {
         if (!(**i)._flag) {
+            return (*i);
+        }
+    }
+    return NULL;
+}
+
+Vertex* Graph::plusMark(){
+    for (vector<Vertex*>::iterator i = _vertex.begin(); i != _vertex.end(); ++i) {
+        if ((**i)._plus && !(**i)._mark && !(**i)._flag) {
+            return (*i);
+        }
+    }
+    return NULL;
+}
+
+Vertex* Graph::moinsMark(){
+    for (vector<Vertex*>::iterator i = _vertex.begin(); i != _vertex.end(); ++i) {
+        if ((**i)._moins && !(**i)._mark && !(**i)._flag) {
             return (*i);
         }
     }

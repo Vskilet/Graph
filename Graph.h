@@ -38,6 +38,10 @@ class Graph{
     vector<vector<Vertex*> > stronglyConnected();
     void falseForAll();
     Vertex* noFlagElement();
+    Vertex* plusMark();
+    Vertex* moinsMark();
+
+
     void matrixLevel();
     void reduceMatrixLevel(vector<vector<Vertex*> > out);
     int vertexLevel(Vertex* v, vector<vector<Vertex*> > out);
