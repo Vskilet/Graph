@@ -56,14 +56,14 @@ void Graph::readFile(const char* fileName){
 }
 
 void Graph::print(){
-    cout << "Mes vertex : " ;
+    cout << "My vertex : " ;
     for (int k = 0; k < _vertex.size(); k++) {
         cout << _vertex[k]->_num << " ";
     }
     cout << endl;
     //Liste des suivants
     for (size_t i = 0; i < _vertex.size(); i++) {
-        cout << endl << "Suivant de Vertex " << i << ": ";
+        cout << endl << "Son of Vertex " << i << ": ";
         for (size_t j = 0; j < _vertex[i]->_leave.size(); j++) {
             cout << _vertex[i]->_leave[j]->_num << " ";
         }
@@ -71,7 +71,7 @@ void Graph::print(){
     cout << endl;
     //Liste des précédents
     for (size_t i = 0; i < _vertex.size(); i++) {
-        cout << endl << "Précédent de Vertex " << i << ": ";
+        cout << endl << "Parents of Vertex " << i << ": ";
         for (size_t j = 0; j < _vertex[i]->_come.size(); j++) {
             cout << _vertex[i]->_come[j]->_num << " ";
         }
@@ -164,7 +164,7 @@ Vertex* Graph::moinsMark(){
 
 void Graph::matrixLevel(){
     vector<vector<Vertex*> > out = stronglyConnected();
-    cout << endl << "Liste des places par level" << endl;
+    cout << endl << "Places peer level" << endl;
     for (vector<vector<Vertex*> >::iterator it = out.begin(); it != out.end(); ++it) {
 
         for (size_t i = 0; i < (*it).size(); i++) {
@@ -193,7 +193,7 @@ void Graph::reduceMatrixLevel(vector<vector<Vertex*> > out){
     }
 
     //On Screen
-    cout << "Matrice de réduite :" << endl;
+    cout << "Reduce Matrix of Level :" << endl;
     for (vector<vector<int> >::iterator it = reduceMatrix.begin(); it != reduceMatrix.end(); ++it) {
 
         for (int i = 0; i < (*it).size(); i++) {
